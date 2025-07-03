@@ -33,9 +33,9 @@ jobs:
         id: draft_state
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo "draft=false" >> $GITHUB_OUTPUT
-          else
             echo "draft=true" >> $GITHUB_OUTPUT
+          else
+            echo "draft=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Prepare bundle files
