@@ -32,10 +32,9 @@ jobs:
       - name: Run YAML validation
         id: validate
         run: |
-          chmod +x lint_rules.sh
-          lint_rules.sh ${{ steps.yamlfiles.outputs.files }}
+          chmod +x ./lint_rules.sh
+          ./lint_rules.sh ${{ steps.yamlfiles.outputs.files }}
 
-  
       - name: Comment PR with result
         uses: thollander/actions-comment-pull-request@v3
         if: always()
