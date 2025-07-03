@@ -17,21 +17,23 @@ for file in $FILES; do
   FILE_RESULT=""
 
   # Simple validation
-  SIMPLE_OUTPUT=$(tooka validate "$file" 2>&1) || true
-  if [ -n "$SIMPLE_OUTPUT" ]; then
+  SIMPLE_OUTPUT=$(tooka validate "$file" 2>&1)
+  SIMPLE_EXIT=$?
+  if [ $SIMPLE_EXIT -ne 0 ]; then
     FILE_RESULT+="❌ **$file** failed validation\n\`\`\`\n$SIMPLE_OUTPUT\n\`\`\`\n"
     ((ERRORS++))
   else
-    FILE_RESULT+="✅ **$file** passed syntax check\n"
+    FILE_RESULT+="✅ **$file** passed simple validation\n"
   fi
 
   # Deep validation
-  DEEP_OUTPUT=$(tooka validate "$file" --deep 2>&1) || true
-  if [ $? -ne 0 ]; then
+  DEEP_OUTPUT=$(tooka validate "$file" --deep 2>&1)
+  DEEP_EXIT=$?
+  if [ $DEEP_EXIT -ne 0 ]; then
     FILE_RESULT+="⚠️ **$file** has validation issues\n\`\`\`\n$DEEP_OUTPUT\n\`\`\`\n"
     ((ERRORS++))
   else
-    FILE_RESULT+="✅ **$file** is properly formatted\n"
+    FILE_RESULT+="✅ **$file** passed deep validation\n"
   fi
 
   RESULTS+="$FILE_RESULT\n"
