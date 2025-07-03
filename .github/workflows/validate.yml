@@ -18,11 +18,24 @@ jobs:
         with:
           toolchain: stable
 
-      - name: Install required cargo
+      - name: Install tooka
         run: cargo install tooka
 
-      - name: Validate Rules
+      - name: Simple validation
         run: |
+          set +e
+          EXIT_CODE=0
           for file in $(find packs -name "*.yaml"); do
-            tooka validate "$file"
+            tooka validate "$file" || EXIT_CODE=1
           done
+          exit $EXIT_CODE
+
+      - name: Deep validation
+        run: |
+          set +e
+          EXIT_CODE=0
+          for file in $(find packs -name "*.yaml"); do
+            tooka validate "$file" --deep || EXIT_CODE=1
+          done
+          exit $EXIT_CODE
+
