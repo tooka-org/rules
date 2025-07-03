@@ -18,7 +18,7 @@ All rules follow the schema defined in [`schema.yaml`](./schema.yaml), and are v
 You can download individual rule files or entire packs. Rules are compatible with the `tooka` CLI:
 
 ```bash
-tooka add my-pack/*.yaml
+tooka add my-pack
 ```
 
 Monthly releases provide a bundled archive of all current rules for easy use by third-party tools and websites.
