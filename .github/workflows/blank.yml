@@ -1,0 +1,27 @@
+name: Validate Rules
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'packs/**.yaml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+
+      - name: Install required cargo
+        run: cargo install tooka
+
+      - name: Validate Rules
+        run: |
+          for file in $(find packs -name "*.yaml"); do
+            tooka validate "$file"
+          done
