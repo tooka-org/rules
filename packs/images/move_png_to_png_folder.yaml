@@ -1,0 +1,11 @@
+id: move-png-to-png-folder
+name: Move PNG Files to PNG Folder
+enabled: true
+description: Moves all .png files into the images/PNG folder, preserving structure.
+priority: 1
+when:
+  extensions: ["png"]
+then:
+  - action: move
+    to: "images/PNG"
+    preserve_structure: true
