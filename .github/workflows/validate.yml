@@ -2,9 +2,10 @@ name: Validate Rules
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ "main" ]
   pull_request:
-    paths:
-      - 'packs/**.yaml'
+    branches: [ "main" ]
 
 jobs:
   validate:
