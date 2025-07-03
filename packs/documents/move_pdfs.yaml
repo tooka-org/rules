@@ -1,0 +1,13 @@
+id: move-pdfs-to-documents
+name: Move PDFs to Documents
+enabled: true
+description: Moves PDF files to the user's Documents folder.
+priority: 2
+when:
+  extensions: ["pdf"]
+  path: "C:/Users/*/Downloads"
+then:
+  - move:
+      action: move
+      to: "C:/Users/*/Documents"
+      preserve_structure: false

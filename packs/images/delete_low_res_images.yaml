@@ -1,0 +1,12 @@
+id: delete-low-res-images
+name: Delete Low Resolution Images
+enabled: true
+description: Deletes images smaller than 100KB.
+priority: 2
+when:
+  extensions: ["jpg", "png"]
+  size_kb:
+    max: 100
+then:
+  - delete:
+      trash: true

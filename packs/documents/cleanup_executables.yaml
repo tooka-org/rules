@@ -1,0 +1,11 @@
+id: cleanup-windows-executables
+name: Cleanup Windows Executables
+enabled: true
+description: Delete .exe and .msi files from the Downloads folder on Windows.
+priority: 1
+when:
+  path: "C:/Users/*/Downloads"
+  extensions: ["exe", "msi"]
+then:
+  - delete:
+      trash: true

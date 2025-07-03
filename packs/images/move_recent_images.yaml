@@ -1,0 +1,14 @@
+id: move-recent-images
+name: Move Recent Images
+enabled: true
+description: Move recently created images (in the last 7 days) to an archive.
+priority: 1
+when:
+  extensions: ["jpg", "png", "jpeg"]
+  created_date:
+    from: "now - 7d"
+then:
+  - move:
+      action: move
+      to: "/archives/recent-images"
+      preserve_structure: true
