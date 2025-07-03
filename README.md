@@ -79,3 +79,18 @@ This allows consumers to track updates more precisely, and ensures release uniqu
 
 
 Thanks for contributing and helping grow the Tooka rule ecosystem!
+
+## ⚠️ Disclaimer
+
+Tooka **only validates the syntax and format** of submitted rules — **it does not execute them** during the validation process.
+
+As a user, **you are fully responsible** for reviewing any rule before using it.
+
+👉 **Always inspect the rule logic yourself** and make sure it does what you expect.
+👉 We strongly recommend running Tooka in **dry-run mode first**:
+
+```bash
+tooka sort ... --dry-run
+```
+
+Use with caution — especially if a rule includes destructive actions like `delete`.
