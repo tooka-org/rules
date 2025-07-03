@@ -24,6 +24,15 @@ jobs:
           echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
           echo "file_name=$FILE_NAME" >> $GITHUB_OUTPUT
 
+      - name: Determine draft state
+        id: draft_state
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "draft=false" >> $GITHUB_OUTPUT
+          else
+            echo "draft=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Prepare bundle files
         run: |
           mkdir -p bundle
@@ -35,8 +44,8 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.version.outputs.tag_name }}
+          tag_name: ${{ steps.version.outputs.version }}
           name: ${{ steps.version.outputs.tag_name }}
-          draft: true
+          draft: ${{ steps.draft_state.outputs.draft }}
           generate_release_notes: true
           files: ${{ steps.version.outputs.file_name }}.tar.gz
