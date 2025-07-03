@@ -7,5 +7,5 @@ when:
   path: "C:/Users/*/Downloads"
   extensions: ["exe", "msi"]
 then:
-  - delete:
-      trash: true
+  - action: delete
+    trash: true

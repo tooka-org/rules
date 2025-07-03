@@ -8,5 +8,5 @@ when:
   size_kb:
     max: 100
 then:
-  - delete:
-      trash: true
+  - action: delete
+    trash: true

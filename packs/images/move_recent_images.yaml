@@ -8,7 +8,6 @@ when:
   created_date:
     from: "now - 7d"
 then:
-  - move:
-      action: move
+    - action: move
       to: "/archives/recent-images"
       preserve_structure: true

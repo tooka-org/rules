@@ -7,7 +7,6 @@ when:
   extensions: ["pdf"]
   path: "C:/Users/*/Downloads"
 then:
-  - move:
-      action: move
+    - action: move
       to: "C:/Users/*/Documents"
       preserve_structure: false
